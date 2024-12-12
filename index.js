@@ -48,6 +48,9 @@ async function fetchWithRedisCache(url) {
     client.set(url.trim(), data, {
       EX: CACHE_TIME,
     })
+    client.set(url.trim(), data, {
+      EX: CACHE_TIME,
+    })
     console.log(data)
   } catch (error) {
     console.log("error fetching the url: ", error.message)
