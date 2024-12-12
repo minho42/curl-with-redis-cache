@@ -6,6 +6,9 @@ const CACHE_TIME = 60 * 60 * 1
 const redisUrl = "redis://127.0.0.1:6379"
 const client = createClient({ url: redisUrl })
 client.on("error", (error) => console.log("redis client error: ", error))
+const redisUrl = "redis://127.0.0.1:6379"
+const client = createClient({ url: redisUrl })
+client.on("error", (error) => console.log("redis client error: ", error))
 await client.connect()
 
 const args = argv.slice(2)
@@ -44,6 +47,9 @@ async function fetchWithRedisCache(url) {
     }
 
     const data = await response.text()
+    client.set(url.trim(), data, {
+      EX: CACHE_TIME,
+    })
     client.set(url.trim(), data, {
       EX: CACHE_TIME,
     })
