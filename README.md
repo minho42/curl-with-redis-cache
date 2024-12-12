@@ -16,7 +16,7 @@ node.js script to use local redis to cache curl results
 
 ```shell
 # ~/.zshrc
-alias curl0="node /Users/minho/code/nodejs/curl-with-redis-cache/index.js"
+alias curl0="node /Users/.../curl-with-redis-cache/index.js"
 
 # use alias
 > curl0 https://jsonplaceholder.typicode.com/posts/1
